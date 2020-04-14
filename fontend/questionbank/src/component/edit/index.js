@@ -18,7 +18,7 @@ export default class Edit extends Component {
 
       onFinish=values=>{
           let {title}=values
-          console.log("title",title)
+          title=`<h2>${title}</h2>`
           question(title,this.state.editorState.toHTML())
           values.title=""
           values.content=""
