@@ -36,7 +36,7 @@ class Juejin():
             "token": "eyJhY2Nlc3NfdG9rZW4iOiJ4cGxZVjRUQ3lLRVZVbk5yIiwicmVmcmVzaF90b2tlbiI6InlCNWhnUlB4VTV4emtzUGUiLCJ0b2tlbl90eXBlIjoibWFjIiwiZXhwaXJlX2luIjoyNTkyMDAwfQ==",
             "src": "web",
             "postId":postId}
-        requests.post(url=self.upload_url,data=data,headers=self.headers)
+        r=requests.post(url=self.upload_url,data=data,headers=self.headers)
 
 
 
@@ -45,4 +45,4 @@ class Juejin():
 
 if __name__ == '__main__':
     csdn = Juejin()
-    csdn.upload("掘金", "我来了")
+    csdn.upload("掘金", 'ize:24px">坐标轴刻度样式,凸出的那根线</span></li></ul><li><span style="font-size:24px">axisLabel</span></li><ul><li><span style="font-size:24px">坐标轴刻度标签 ，显示在轴上的数值</span></li></ul><li><span style="font-size:24px">splitLine</span></li><ul><li><span style="font-size:24px">设置grid中分隔线的样式</span></li></ul><li><span style="font-size:24px">data</span></li><ul><li><span style="font-size:24px">类目轴(type=&quot;category&quot;)的样式</span></li></ul></ul><p></p><p></p>')

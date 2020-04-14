@@ -4,7 +4,6 @@ import BraftEditor from 'braft-editor'
 import 'braft-editor/dist/index.css'
 import {question} from "../../api"
 
-
 export default class Edit extends Component {
     state={
         editorState:BraftEditor.createEditorState(null)
@@ -21,6 +20,8 @@ export default class Edit extends Component {
           let {title}=values
           console.log("title",title)
           question(title,this.state.editorState.toHTML())
+          values.title=""
+          values.content=""
           }
 
     render() {

@@ -13,3 +13,20 @@ def question():
     db.session.add(question)
     db.session.commit()
     return "sucess"
+
+
+@api.route("/questions",methods=["GET","POST"])
+def questions():
+    data=json.loads(request.get_data(as_text=True))
+    if not data:
+        allData=Question.query.all()
+        result = [{"id": data.id, "title": data.title, "content": data.content, "updateTime": data.updateTime} for data
+                  in allData]
+        return jsonify({"data": result})
+    else:
+        id=data["id"]
+        print(id)
+        article=Question.query.filter(Question.id == id).first()
+        db.session.delete(article)
+        db.session.commit()
+        return "sucess"

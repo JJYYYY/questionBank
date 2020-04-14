@@ -15,9 +15,12 @@ export default function ajax(url,data={},type="GET"){
         //如果成功了
         promise.then(Response=>{
             resolve(Response.data)
+           if(Response.data==="sucess")
+           {
+            message.success('上传成功')};
         //如果失败了,提示异常信息
         }).catch(error=>{
-            message.error("请求出错："+ error.message)
+            message.error("失败")
         })
     })
 } 

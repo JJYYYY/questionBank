@@ -43,5 +43,4 @@ class JianShu():
 if __name__ == '__main__':
     jiangsu=JianShu()
     # jiangsu.create_new_article("122121")
-
     jiangsu.upload("简书","我来了")
