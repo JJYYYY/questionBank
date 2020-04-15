@@ -33,7 +33,7 @@ export default class Edit extends Component {
             onChange:this.handleChange
         }
         return (
-            <div className="content">
+            <div className="content" style={{backgroundColor:"#CCE8CF"}}>
                 <Form
 				name="normal_login"
                 className="login-form"
@@ -45,7 +45,7 @@ export default class Edit extends Component {
       >
         <Input />
       </Form.Item>
-             <BraftEditor {...editorProps}/>
+             <BraftEditor {...editorProps} contentStyle={{height:"500px" ,overflow:"auto"}} controlBarStyle={{position:"sticky",top:"0"}}/>
             <Form.Item>
 					<Button
 						type="primary"

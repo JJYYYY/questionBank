@@ -10,11 +10,7 @@ export default class Home extends Component {
   state={
     activeIndex:1,
   }
-  changeSelectedKeys=()=>{
-    this.setState({
-      activeIndex:1
-    })
-  }
+
 
   handleClick=(index)=>{
     this.setState({
@@ -35,7 +31,7 @@ export default class Home extends Component {
                 <Edit />
             </Content> :
             <Content style={{ padding: '0 50px' }} >
-                <ViewAll changeSelectedKeys={this.changeSelectedKeys}/>
+                <ViewAll />
             </Content>} 
             <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by BXZ</Footer>
           </Layout>

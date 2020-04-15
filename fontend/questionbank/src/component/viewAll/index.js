@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import  { questions } from "../../api"
-import { Button } from 'antd';
+import { Button} from 'antd';
+import Article from '../article'
 import './index.less'
 
 export default class ViewAll extends Component {
     state={
-        articles:[]
+        articles:[],
+        activeIndex:-1,
     }
 
     showhtml=(htmlString)=>{
@@ -14,7 +16,9 @@ export default class ViewAll extends Component {
     }
 
     handleEdit=(index)=>{
-        this.props.changeSelectedKeys()
+        setTimeout(() => {
+            this.setState({activeIndex:index})},
+            0)
     }
 
     handleDelete=(id)=>{
@@ -26,15 +30,35 @@ export default class ViewAll extends Component {
         })
 
     }
+
+ 
+
+
+    changeActiveIndex=()=>{
+        questions().then(data=>{
+            console.log("data",data)
+            this.setState({
+                articles:data.data,
+                activeIndex:-1
+            })
+         })
+    }
+
     renderTag=(item,index)=>{
         return (
             <div className="article" style={{border:"1px solid #000",marginTop:"20px"}} key={index}>
-                <div className="header" style={{display:"flex",justifyContent: "space-between",fontSize:"16px"}}><h2 className="title">{item.title}</h2><span className="update-time">{item.updateTime}</span></div>
-        <div className="content">{this.showhtml(item.content)}</div>
-        <div className="button"><Button onClick={()=>this.handleEdit(item.id)}>编辑</Button>
-        {/* <Button style={{marginLeft:"30px"}} onClick={()=>this.handleDelete(item.id)}>删除</Button> */}
+            {this.state.activeIndex===index ? 
+            <Article id={item.id} title={item.title} content={item.content} changeActiveIndex={this.changeActiveIndex}></Article> 
+                : ( 
+                    <div style={{margin:5,backgroundColor:"#CCE8CF"}}>
+                    <div className="header" style={{display:"flex",justifyContent: "space-between",fontSize:"16px"}}>
+                    <h2 className="title" >{item.title}</h2>} <span className="update-time">{item.updateTime}</span></div>
+                    <div className="content" style={{border:"1px solid #000",height:"300px",overflow:"auto"}}>{this.showhtml(item.content)}</div>
+                    <div className="button">
+                        <Button onClick={()=>this.handleEdit(index)}>编辑</Button>
+                    </div></div>
+                    )}
         </div>
-            </div>
         )
     }
 
@@ -44,8 +68,6 @@ export default class ViewAll extends Component {
                articles:data.data
            })
         })
-
-       
     }
 
     render() {
